@@ -6,7 +6,7 @@
 /*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 19:37:50 by hrolle            #+#    #+#             */
-/*   Updated: 2021/10/28 18:00:25 by hrolle           ###   ########.fr       */
+/*   Updated: 2021/11/01 03:15:43 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <strings.h>
 int	ft_isalpha(int c)
 {
 	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
@@ -64,17 +65,92 @@ size_t	ft_strlen(const char *s)
 void	*ft_memset(void *b, int c, size_t len)
 {
 	char	*str;
+	size_t	i;
 
-	str = b;
-	while (len - 1 >= 0)
-		str[--len] = c;
+	str = (char *)b;
+	i = 0;
+	while (i < len)
+		str[i++] = c;
 	return (b);
 }
+
+void	ft_bzero(void *s, size_t n)
+{
+	char	*str;
+	size_t	i;
+
+	str = (char *)s;
+	i = 0;
+	while (i < n)
+		str[i++] = 0;
+}
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	if (!src || !dest)
+		return (0);
+	while (n > 0)
+	{
+		((char *)dest)[n] = ((char *)src)[n];
+		n++;
+	}
+	return (dest);
+}
+
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	size_t i;
+
+	i = 0;
+	if (src < dst)
+	{
+		while (len > 0)
+		{
+			len--;
+			((char *)dst)[len] = ((char *)src)[len];
+		}
+		return (dst);
+	}
+	else if (src > dst)
+	{
+		while (i < len)
+		{
+			((char *)dst)[i] = ((char *)src)[i];
+			i++;
+		}
+		return (dst);
+	}
+	return (dst);
+}
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	size_t i;
+
+	i = 0;
+	while (i < dstsize - 1)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	if (dstsize > 0)
+		dst[i] = 0;
+	return (ft_strlen(src));
+}
+
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+{
+	
 
 int	main(int argc, char **argv)
 {
 	if (argc < 2)
 		return (0);
-	printf("%s\n%s\n%s\n%s\n", argv[1], argv[2], memset(argv[1], *argv[3], atoi(argv[4])), ft_memset(argv[2], *argv[3], atoi(argv[4])));
+	char dest[100] = {0};
+	char dest2[100] = {0};
+	printf("%s\n%s\n%s\n%s\n", argv[1], argv[1], dest, dest2);
+	memmove(dest, argv[1], atoi(argv[2]));
+	ft_memmove(dest2, argv[1], atoi(argv[2]));
+	printf("%s\n%s\n%s\n%s\n", argv[1], argv[1], dest, dest2);
 	return (0);
 }
