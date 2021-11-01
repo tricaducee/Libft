@@ -6,7 +6,7 @@
 /*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 19:37:50 by hrolle            #+#    #+#             */
-/*   Updated: 2021/11/01 03:15:43 by hrolle           ###   ########.fr       */
+/*   Updated: 2021/11/01 22:31:46 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,36 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	while (dst[i])
+		i++;
+	if (i >= dstsize)
+		return (dstsize + ft_strlen(src));
+	while (src[j] && i < dstsize - 1)
+		dst[i++] = src[j++];
+	dst[i] = 0;
+	return (i);
+}
+
+int	ft_toupper(int c)
+{
+	if (c >= 97 && c <= 122)
+		return (c - 32);
+	return (c);
+}
+
+int	ft_tolower(int c)
+{
+	if (c >= 65 && c <= 90)
+		return (c + 32);
+	return (c);
+}
+
+
 
 int	main(int argc, char **argv)
 {
