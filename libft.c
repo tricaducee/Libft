@@ -6,7 +6,7 @@
 /*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 19:37:50 by hrolle            #+#    #+#             */
-/*   Updated: 2021/11/01 22:31:46 by hrolle           ###   ########.fr       */
+/*   Updated: 2021/11/02 22:22:37 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,11 @@ void	*ft_memset(void *b, int c, size_t len)
 
 void	ft_bzero(void *s, size_t n)
 {
-	char	*str;
 	size_t	i;
 
-	str = (char *)s;
 	i = 0;
 	while (i < n)
-		str[i++] = 0;
+		(char *)s[i++] = 0;
 }
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
@@ -168,7 +166,8 @@ int	ft_tolower(int c)
 		return (c + 32);
 	return (c);
 }
-char *ft_strchr(const char *s, int c)
+
+char	*ft_strchr(const char *s, int c)
 {
 	while (*s)
 	{
@@ -176,15 +175,47 @@ char *ft_strchr(const char *s, int c)
 			return ((char *)s);
 		s++;
 	}
+	if (c == 0)
+		return ((char *)s);
 	return (0);
 }
 
+char	*ft_strrchr(const char *s, int c)
+{
+	int	i;
+
+	i = ft_strlen(s);
+	while (i >= 0)
+	{
+		if (s[i] == ((char)c))
+			return ((char *)s + i);
+		i--;
+	}
+	return (0);
+}
+
+int	strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t i;
+
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (s1[i] && s2[i] && i < n && s1[i] == s2[i])
+		i++;
+	return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
+}
+
+
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+{
+	
 
 
 int	main(int argc, char **argv)
 {
 	if (argc < 2)
 		return (0);
-	printf("%s\n%s\n", ft_strchr(argv[1], *argv[2]), strchr(argv[1], *argv[2]));
+	printf("%s\n%s\n", ft_strrchr(argv[1], *argv[2]), strrchr(argv[1], *argv[2]));
 	return (0);
 }
