@@ -168,6 +168,16 @@ int	ft_tolower(int c)
 		return (c + 32);
 	return (c);
 }
+char *ft_strchr(const char *s, int c)
+{
+	while (*s)
+	{
+		if (*s == ((char)c))
+			return ((char *)s);
+		s++;
+	}
+	return (0);
+}
 
 
 
@@ -175,11 +185,6 @@ int	main(int argc, char **argv)
 {
 	if (argc < 2)
 		return (0);
-	char dest[100] = {0};
-	char dest2[100] = {0};
-	printf("%s\n%s\n%s\n%s\n", argv[1], argv[1], dest, dest2);
-	memmove(dest, argv[1], atoi(argv[2]));
-	ft_memmove(dest2, argv[1], atoi(argv[2]));
-	printf("%s\n%s\n%s\n%s\n", argv[1], argv[1], dest, dest2);
+	printf("%s\n%s\n", ft_strchr(argv[1], *argv[2]), strchr(argv[1], *argv[2]));
 	return (0);
 }
