@@ -206,6 +206,32 @@ int	strncmp(const char *s1, const char *s2, size_t n)
 	return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
 }
 
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	while (n > 0)
+	{
+		if (((char *)*s == ((char)c))
+			return ((char *)s);
+		((char *)s)++;
+		n--;
+	}
+	if (c == 0)
+		return ((char *)s);
+	return (0);
+}
+
+int	memcmp(const char *s1, const char *s2, size_t n)
+{
+	size_t i;
+
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (((char *)s1)[i] && ((char *)s2)[i] && i < n && ((char *)s1)[i] == ((char *)s2)[i])
+		i++;
+	return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
+}
+
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
