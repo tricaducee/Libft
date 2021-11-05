@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 10:02:47 by hrolle            #+#    #+#             */
-/*   Updated: 2021/11/05 08:12:18 by hrolle           ###   ########.fr       */
+/*   Created: 2021/11/05 07:58:55 by hrolle            #+#    #+#             */
+/*   Updated: 2021/11/05 08:13:54 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
-{
-	int	i;
+#include "libft.h"
 
-	i = 0;
-	while (
+char	*ft_strdup(const char *s1)
+{
+	char	*p;
+
+	p = malloc((ft_strlen(s1) + 1) * sizeof(char));
+	if (!p)
+		return (0);
+	ft_strlcpy(p, s1, ft_strlen(s1) + 1);
+	return (p);
+}
