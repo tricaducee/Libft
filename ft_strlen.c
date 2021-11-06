@@ -6,9 +6,11 @@
 /*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 08:47:40 by hrolle            #+#    #+#             */
-/*   Updated: 2021/11/04 08:47:50 by hrolle           ###   ########.fr       */
+/*   Updated: 2021/11/05 21:32:45 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 size_t	ft_strlen(const char *s)
 {

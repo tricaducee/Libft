@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <strings.h>
+#include "libft.h"
+
 /*
 int	main()
 {
@@ -12,14 +14,13 @@ int	main()
 	return (0);
 }*/
 
-int	main(int argc, char **argv)
+void test(char *param1, char *param2, size_t n)
 {
-	if (argc < 4)
-	{
-		printf("error");
-		return (0);
-	}
+	int max = ft_strlen(param1);;
+	printf("normal func : %s\ttruc func : %s\n", strnstr(param1, param2, max), ft_strnstr(param1, param2, max));
+}
 
-	printf("%s\n",(char *)ft_memchr(argv[1], *argv[2], atoi(argv[3])));
-	return (0);
+int	main()
+{
+	test("AAAAAAAAAAA", "AAAAAAAAAAA", 15);
 }

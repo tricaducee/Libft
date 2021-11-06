@@ -6,9 +6,11 @@
 /*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 08:49:18 by hrolle            #+#    #+#             */
-/*   Updated: 2021/11/04 09:16:21 by hrolle           ###   ########.fr       */
+/*   Updated: 2021/11/05 21:31:56 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
