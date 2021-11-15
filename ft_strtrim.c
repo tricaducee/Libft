@@ -1,32 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 23:01:09 by hrolle            #+#    #+#             */
-/*   Updated: 2021/11/13 17:38:12 by hrolle           ###   ########.fr       */
+/*   Created: 2021/11/13 17:57:09 by hrolle            #+#    #+#             */
+/*   Updated: 2021/11/15 01:56:31 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*str;
-	char	*ret;
+	unsigned int	i;
+	unsigned int	j;
+	unsigned int	in;
+	char			*ret;
 
-	if (!(s1 && s2))
+	i = 0;
+	while (s1[i] && set[j])
+	{
+		j = 0;
+		while (set[j] && set[j++] != s1[i])
+		if (set[j])
+			i++;
+	}
+	in = i;
+	while (s1[i])
+		i++;
+	while (s1[i] && set[j])
+	{
+		j = 0;
+		while (set[j] && set[j++] != s1[i])
+		if (set[j])
+			i--;
+	}
+	i -= in;
+	ret = malloc((i + 1) * sizeof(char));
+	if (!ret)
 		return (0);
-	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	ret = str;
-	if (!str)
-		return (0);
-	while (*s1)
-		*(str++) = *(s1++);
-	while (*s2)
-		*(str++) = *(s2++);
-	*str = 0;
+	ft_strlcpy(ret, s1 + in, i + 1);
 	return (ret);
 }

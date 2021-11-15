@@ -6,7 +6,7 @@
 /*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 23:01:09 by hrolle            #+#    #+#             */
-/*   Updated: 2021/11/11 23:39:34 by hrolle           ###   ########.fr       */
+/*   Updated: 2021/11/13 17:36:42 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,22 @@
 
 char	*ft_strjoin(const char *s1, const char *s2)
 {
+	size_t	i;
+	size_t	j;
 	char	*str;
 
+	i = 0;
+	j = 0;
 	if (!(s1 || s2))
 		return (0);
-	if (!(str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char))))
+	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!str)
 		return (0);
-	while (*s1)
-		*(str++) = *(s1++);
-	while (*s2)
-		*(str++) = *(s2++);
-	*str = 0;
-	return (&str[0]);
+	while (s1[j])
+		str[i++] = s1[j++];
+	j = 0;
+	while (s2[j])
+		str[i++] = s2[j++];
+	str[i] = 0;
+	return (str);
 }
