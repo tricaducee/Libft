@@ -6,7 +6,7 @@
 /*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 15:48:33 by hrolle            #+#    #+#             */
-/*   Updated: 2021/11/26 16:41:04 by hrolle           ###   ########.fr       */
+/*   Updated: 2021/12/02 17:18:19 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	**ft_split(char const *s, char c)
 			i++;
 			while (s[j] != c)
 				j++;
-			strs[k++] = ft_substr(strs, i, j);
+			strs[k++] = ft_substr(s, i, j);
 		}
 		i++;
 	}
