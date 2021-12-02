@@ -14,16 +14,18 @@
 
 char	**ft_split(char const *s, char c)
 {
-	char 	**strs;
+	char	**strs;
 	int		i;
 	int		j;
 	int		k;
 
 	i = 0;
 	j = 0;
+	if (s[i] != c)
+		j++;
 	while (s[i])
 	{
-		if (s[i] == c && s[i + 1] != c)
+		if (s[i] == c && s[i + 1] != c && s[i + 1] != 0)
 			j++;
 		i++;
 	}
@@ -37,6 +39,7 @@ char	**ft_split(char const *s, char c)
 		if (s[i] == c && s[i + 1] != c)
 		{
 			i++;
+			j = i;
 			while (s[j] != c)
 				j++;
 			strs[k++] = ft_substr(s, i, j);
