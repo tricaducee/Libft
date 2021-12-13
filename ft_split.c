@@ -6,46 +6,71 @@
 /*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 15:48:33 by hrolle            #+#    #+#             */
-/*   Updated: 2021/12/02 17:18:19 by hrolle           ###   ########.fr       */
+/*   Updated: 2021/12/13 23:18:14 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_split(char const *s, char c)
+static	void	remp(char const *s, char **strs, char c)
 {
-	char	**strs;
-	int		i;
-	int		j;
-	int		k;
+	int	i;
+	int	j;
+	int	k;
 
 	i = 0;
 	j = 0;
-	if (s[i] != c)
-		j++;
-	while (s[i])
-	{
-		if (s[i] == c && s[i + 1] != c && s[i + 1] != 0)
-			j++;
-		i++;
-	}
-	strs = malloc((j + 1) * sizeof(char *));
-	if (!strs)
-		return (0);
-	i = 0;
 	k = 0;
 	while (s[i])
 	{
-		if (s[i] == c && s[i + 1] != c)
-		{
+		while (s[i] == c)
 			i++;
-			j = i;
-			while (s[j] != c)
-				j++;
-			strs[k++] = ft_substr(s, i, j);
-		}
-		i++;
+		j = i;
+		while (s[i] != c && s[i])
+			i++;
+		strs[k] = ft_substr(s, i, j);
+		k++;
 	}
 	strs[k] = 0;
+}
+
+static	int	compt_w(char const *s, char c)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		if (s[i] != c && s[i + 1] == c || !s[i + 1])
+			j++;
+		i++;
+	}
+	return (j);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**strs;
+
+	strs = malloc((compt_w(s, c) + 1) * sizeof(char *));
+	if (!strs)
+		return (0);
+	remp(s, strs, c);
 	return (strs);
+}
+
+
+#include <stdio.h>
+int	main()
+{
+	char *s = " Saloperie de   ft_split  tu m'emmerde  !!!";
+	char **ss = ft_split(s, ' ');
+	int i = 0;
+
+	while (i < 6)
+		printf("%s\n", ss[i++]);
+
+	return (0);
 }
