@@ -6,7 +6,7 @@
 /*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 15:48:33 by hrolle            #+#    #+#             */
-/*   Updated: 2021/12/14 21:23:38 by hrolle           ###   ########.fr       */
+/*   Updated: 2021/12/16 01:46:36 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,13 @@ static	int	compt_w(char const *s, char c)
 	}
 	return (j);
 }
-
+/*
+static void print_list(char **s)
+{
+	while(*s)
+		printf("debug:%s\n",*(s++));
+}
+*/
 char	**ft_split(char const *s, char c)
 {
 	char	**strs;
@@ -47,10 +53,11 @@ char	**ft_split(char const *s, char c)
 		while (s[i] == c)
 			i++;
 		j = i;
+		if(!s[i])
+			break;
 		while (s[i] != c && s[i])
 			i++;
 		strs[k] = ft_substr(s, j, i - j);
-//		printf("rem:;%d:%s\n", k, strs[k]);
 		k++;
 	}
 	strs[k] = NULL;
@@ -59,7 +66,7 @@ char	**ft_split(char const *s, char c)
 /*
 int	main()
 {
-	char *s = "      split       this for   me  !     ";
+	char *s = "      split       this for   me  ! ";
 	char **ss = ft_split(s, ' ');
 	int i = 0;
 
