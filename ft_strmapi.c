@@ -1,42 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 10:02:47 by hrolle            #+#    #+#             */
-/*   Updated: 2021/12/16 18:36:06 by hrolle           ###   ########.fr       */
+/*   Created: 2021/12/16 19:36:51 by hrolle            #+#    #+#             */
+/*   Updated: 2021/12/16 20:01:13 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int				pn;
-	unsigned int	nbr;
-	int				i;
+	char			*s2;
+	unsigned int	i;
 
-	pn = 1;
-	nbr = 0;
+	if (!s || !f)
+		return (0);
 	i = 0;
-	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
-		str++;
-	if (*str == '-' || *str == '+')
-		if (*(str++) == '-')
-			pn *= -1;
-	while (*str >= '0' && *str <= '9')
+	s2 = malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!s2)
+		return (0);
+	while (s[i])
 	{
-			nbr = nbr * 10 + (*(str++) - '0');
-			i++;
+		s2[i] = f(i, s[i]);
+		i++;
 	}
-	if (i > 10)
-	{
-		if (pn < 0)
-			return (0);
-		else
-			return (-1);
-	}
-	return ((int)nbr * pn);
+	s2[i] = 0;
+	return (s2);
 }

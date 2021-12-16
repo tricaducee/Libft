@@ -6,7 +6,7 @@
 #    By: nouassif <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/30 17:08:00 by nouassif          #+#    #+#              #
-#    Updated: 2021/12/14 22:32:55 by hrolle           ###   ########.fr        #
+#    Updated: 2021/12/16 21:25:06 by hrolle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ SRCS	=		ft_isalpha.c	ft_isdigit.c	ft_isalnum.c	\
 				ft_memchr.c		ft_memcmp.c		ft_strnstr.c	\
 				ft_calloc.c		ft_atoi.c		ft_substr.c		\
 				ft_strjoin.c	ft_strtrim.c	ft_split.c		\
-				ft_itoa.c
+				ft_itoa.c		ft_strmapi.c	ft_striteri.c	\
+				ft_putchar_fd.c	ft_putstr_fd.c	ft_putendl_fd.c \
+				ft_putnbr_fd.c	
 
 OBJS	=		${SRCS:.c=.o}
 

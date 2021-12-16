@@ -6,11 +6,12 @@
 /*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 21:23:57 by hrolle            #+#    #+#             */
-/*   Updated: 2021/12/16 01:50:13 by hrolle           ###   ########.fr       */
+/*   Updated: 2021/12/16 19:28:42 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+//#include <stdio.h>
 
 static void	putnbr(char *str, int i, unsigned int n)
 {
@@ -22,11 +23,13 @@ static void	putnbr(char *str, int i, unsigned int n)
 	str[i] = nb % 10 + '0';
 }
 
-static int	int_compt(unsigned int n)
+static int	int_compt(unsigned int n, int pn)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
+	if (pn < 0)
+		i++;
 	while (n > 9)
 	{
 		n /= 10;
@@ -44,30 +47,23 @@ char *ft_itoa(int n)
 	pn = 1;
 	if (n < 0)
 		pn *= -1;
-	i = int_compt(n * pn);
+	i = int_compt(n * pn, pn);
+	str = ft_calloc(i + 1, sizeof(char));
+	if (!str)
+		return (0);
 	if (n < 0)
 	{
-		str = ft_calloc(i + 1, sizeof(char));
-		if (!str)
-			return (0);
 		str[0] = '-';
-		putnbr(str, i + 1, n * pn);
-	} else
-	{
-		str = ft_calloc(i, sizeof(char));
-		if (!str)
-			return (0);
-		putnbr(str, i, n);
+		putnbr(str, i - 1, n * pn);
 	}
+	else
+		putnbr(str, i - 1, n);
 	return (str);
 }
-
-#include <stdio.h>
-
+/*
 int main(int argc, char **argv)
 {
 	(void)argc;
-
 	printf("%s\n", ft_itoa(ft_atoi(argv[1])));
 	return (0);
-}
+}*/

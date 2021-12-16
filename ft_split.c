@@ -6,7 +6,7 @@
 /*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 15:48:33 by hrolle            #+#    #+#             */
-/*   Updated: 2021/12/16 01:46:36 by hrolle           ###   ########.fr       */
+/*   Updated: 2021/12/16 18:29:32 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,27 +38,26 @@ static void print_list(char **s)
 char	**ft_split(char const *s, char c)
 {
 	char	**strs;
-	int		i;
 	int		j;
 	int		k;
 
-	i = 0;
-	j = 0;
 	k = 0;
+	if (!s)
+		return (0);
 	strs = malloc((compt_w(s, c) + 1) * sizeof(char *));
 	if (!strs)
 		return (0);
-	while (s[i])
+	while (*s)
 	{
-		while (s[i] == c)
-			i++;
-		j = i;
-		if(!s[i])
+		while (*s == c)
+			s++;
+		if(!*s)
 			break;
-		while (s[i] != c && s[i])
-			i++;
-		strs[k] = ft_substr(s, j, i - j);
-		k++;
+		j = 0;
+		while (s[j] != c && s[j])
+			j++;
+		strs[k++] = ft_substr(s, 0, j);
+		s += j;
 	}
 	strs[k] = NULL;
 	return (strs);
@@ -66,7 +65,8 @@ char	**ft_split(char const *s, char c)
 /*
 int	main()
 {
-	char *s = "      split       this for   me  ! ";
+	//char *s = "      split       this for   me  ! ";
+	char *s = "                  olol";
 	char **ss = ft_split(s, ' ');
 	int i = 0;
 
@@ -76,4 +76,5 @@ int	main()
 		i++;
 	}
 	return (0);
-}*/
+}
+*/
