@@ -3,15 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: nouassif <marvin@42lausanne.ch>            +#+  +:+       +#+         #
+#    By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/10/30 17:08:00 by nouassif          #+#    #+#              #
-#    Updated: 2021/12/16 21:25:06 by hrolle           ###   ########.fr        #
+#    Created: 2021/11/05 20:47:41 by hrolle            #+#    #+#              #
+#    Updated: 2021/12/17 16:16:10 by hrolle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=		libft.a
-CCFLAGS =		-Wall -Werror -Wextra
+NAME	=	libft.a
+
+CfLAGS	=	-Wall -Wextra -Werror
+
+CC		=	cc
 
 SRCS	=		ft_isalpha.c	ft_isdigit.c	ft_isalnum.c	\
 			   	ft_isascii.c	ft_isprint.c	ft_strlen.c		\
@@ -26,28 +29,22 @@ SRCS	=		ft_isalpha.c	ft_isdigit.c	ft_isalnum.c	\
 				ft_putchar_fd.c	ft_putstr_fd.c	ft_putendl_fd.c \
 				ft_putnbr_fd.c	
 
-OBJS	=		${SRCS:.c=.o}
+OBJS	=	${SRCS:.c=.o}
 
-all : $(NAME)
-	
-$(NAME) : ${OBJS}
-	ar rcs $@ $^
 
-%.o : %.c
-	gcc ${CCFLAGS} -o $@ -c $<
+RM		=	rm -f
 
-clean :
-	rm ${OBJS}
+$(NAME):	$(OBJS)
+			ar rcs $@ $^
 
-fclean : clean
-	rm ${NAME}
+all:		${NAME}
 
-re : fclean all
+clean:
+			${RM} ${OBJS}
 
-out :
-	@echo Compiling..
-	@gcc $(CFLAGS) main.c $(SRCS)
+fclean:		clean
+			${RM} ${NAME}
 
-cleanout :
-	@echo deleting a.out
-	@rm a.out
+re:			fclean all
+
+.PHONY:		clean fclean all

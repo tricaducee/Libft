@@ -6,7 +6,7 @@
 /*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 08:52:30 by hrolle            #+#    #+#             */
-/*   Updated: 2021/11/15 13:25:09 by hrolle           ###   ########.fr       */
+/*   Updated: 2021/12/16 22:10:56 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	size_t	i;
 
 	i = 0;
-	/*if (!dst && !src)
-		return (0);*/
 	if (dstsize)
 	{
 		while (i < dstsize - 1 && src[i])
@@ -26,7 +24,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 			dst[i] = src[i];
 			i++;
 		}
-	dst[i] = 0;
+		dst[i] = 0;
 	}
 	return (ft_strlen(src));
 }

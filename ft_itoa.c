@@ -6,12 +6,11 @@
 /*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 21:23:57 by hrolle            #+#    #+#             */
-/*   Updated: 2021/12/16 19:28:42 by hrolle           ###   ########.fr       */
+/*   Updated: 2021/12/16 22:06:11 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
 
 static void	putnbr(char *str, int i, unsigned int n)
 {
@@ -38,10 +37,10 @@ static int	int_compt(unsigned int n, int pn)
 	return (i);
 }
 
-char *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
-	int	pn;
-	int i;
+	int		pn;
+	int		i;
 	char	*str;
 
 	pn = 1;
@@ -60,10 +59,3 @@ char *ft_itoa(int n)
 		putnbr(str, i - 1, n);
 	return (str);
 }
-/*
-int main(int argc, char **argv)
-{
-	(void)argc;
-	printf("%s\n", ft_itoa(ft_atoi(argv[1])));
-	return (0);
-}*/

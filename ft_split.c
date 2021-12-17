@@ -6,12 +6,11 @@
 /*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 15:48:33 by hrolle            #+#    #+#             */
-/*   Updated: 2021/12/16 18:29:32 by hrolle           ###   ########.fr       */
+/*   Updated: 2021/12/16 22:09:32 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static	int	compt_w(char const *s, char c)
 {
@@ -28,13 +27,7 @@ static	int	compt_w(char const *s, char c)
 	}
 	return (j);
 }
-/*
-static void print_list(char **s)
-{
-	while(*s)
-		printf("debug:%s\n",*(s++));
-}
-*/
+
 char	**ft_split(char const *s, char c)
 {
 	char	**strs;
@@ -51,8 +44,8 @@ char	**ft_split(char const *s, char c)
 	{
 		while (*s == c)
 			s++;
-		if(!*s)
-			break;
+		if (!*s)
+			break ;
 		j = 0;
 		while (s[j] != c && s[j])
 			j++;
@@ -62,19 +55,3 @@ char	**ft_split(char const *s, char c)
 	strs[k] = NULL;
 	return (strs);
 }
-/*
-int	main()
-{
-	//char *s = "      split       this for   me  ! ";
-	char *s = "                  olol";
-	char **ss = ft_split(s, ' ');
-	int i = 0;
-
-	while (ss[i])
-	{
-		printf("main:%d:%s\n", i, ss[i]);
-		i++;
-	}
-	return (0);
-}
-*/

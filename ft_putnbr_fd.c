@@ -6,7 +6,7 @@
 /*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 21:16:37 by hrolle            #+#    #+#             */
-/*   Updated: 2021/12/16 21:26:28 by hrolle           ###   ########.fr       */
+/*   Updated: 2021/12/16 22:07:04 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	putnbr(unsigned int n, int fd)
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	int pn;
+	int	pn;
 
 	pn = 1;
 	if (n < 0)
