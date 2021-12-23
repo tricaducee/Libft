@@ -1,42 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 10:02:47 by hrolle            #+#    #+#             */
-/*   Updated: 2021/12/23 08:04:00 by hrolle           ###   ########.fr       */
+/*   Created: 2021/12/23 08:32:50 by hrolle            #+#    #+#             */
+/*   Updated: 2021/12/23 08:50:41 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	ft_lstadd_front(t_list **alst, t_list *new)
 {
-	int				pn;
-	unsigned int	nbr;
-	int				i;
-
-	pn = 1;
-	nbr = 0;
-	i = 0;
-	while (*str == ' ' || (*str >= '\t' && *str <= '\r'))
-		str++;
-	if (*str == '-' || *str == '+')
-		if (*(str++) == '-')
-			pn *= -1;
-	while (*str >= '0' && *str <= '9')
+	if (alst)
 	{
-		nbr = nbr * 10 + (*(str++) - '0');
-		i++;
+		if(!new->next)
+			new->next = *alst;
 	}
-	if (i > 10)
-	{
-		if (pn < 0)
-			return (0);
-		else 
-			return (-1);
-	}
-	return ((int)nbr * pn);
 }
