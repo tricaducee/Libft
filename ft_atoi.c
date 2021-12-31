@@ -6,7 +6,7 @@
 /*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 10:02:47 by hrolle            #+#    #+#             */
-/*   Updated: 2021/12/23 08:04:00 by hrolle           ###   ########.fr       */
+/*   Updated: 2021/12/31 18:17:54 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_atoi(const char *str)
 	{
 		if (pn < 0)
 			return (0);
-		else 
+		else
 			return (-1);
 	}
 	return ((int)nbr * pn);

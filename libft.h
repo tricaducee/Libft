@@ -6,7 +6,7 @@
 /*   By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 19:37:50 by hrolle            #+#    #+#             */
-/*   Updated: 2021/12/23 08:23:34 by hrolle           ###   ########.fr       */
+/*   Updated: 2021/12/31 18:24:58 by hrolle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
@@ -18,7 +18,7 @@
 typedef struct s_list
 {
 	void			*content;
-	struct	s_list	*next;
+	struct s_list	*next;
 }					t_list;
 
 int		ft_atoi(const char *str);
