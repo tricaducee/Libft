@@ -6,7 +6,7 @@
 #    By: hrolle <marvin@42lausanne.ch>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/05 20:47:41 by hrolle            #+#    #+#              #
-#    Updated: 2021/12/23 08:39:22 by hrolle           ###   ########.fr        #
+#    Updated: 2022/01/01 00:11:05 by hrolle           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,8 @@ SRCS	=		ft_isalpha.c	ft_isdigit.c	ft_isalnum.c	\
 				ft_putnbr_fd.c	
 
 SRCS_B	=		ft_lstnew.c		ft_lstadd_front.c	ft_lstsize.c 	\
-			ft_lstlast.c		ft_lstadd_back.c	ft_lstdelone.c	\
-			ft_lstclear.c		ft_lstiter.c
+				ft_lstlast.c	ft_lstadd_back.c	ft_lstdelone.c	\
+				ft_lstclear.c	ft_lstiter.c		ft_lstmap.c
 
 OBJS	=	${SRCS:.c=.o}
 
